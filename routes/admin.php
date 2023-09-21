@@ -1,0 +1,64 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\SubCategoryController;
+use Illuminate\Support\Facades\Auth;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('roles', RoleController::class);
+        Route::resource('users', UserController::class);
+        
+        Route::resource('permissions', PermissionController::class);
+
+        Route::prefix('subcategories')->controller(SubCategoryController::class)->name('subcategories.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::get('edit/{id}', 'edit')->name('edit');
+            Route::get('show/{id}', 'show')->name('show');
+            Route::post('update/{id}', 'update')->name('update');
+            Route::get('destroy/{id}', 'destroy')->name('destroy');
+        });
+        Route::prefix('childcategories')->controller(ChildCategoryController::class)->name('childcategories.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::get('edit/{id}', 'edit')->name('edit');
+            Route::get('show/{id}', 'show')->name('show');
+            Route::post('update/{id}', 'update')->name('update');
+            Route::get('destroy/{id}', 'destroy')->name('destroy');
+        });
+        Route::prefix('categories')->controller(CategoryController::class)->name('categories.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::get('edit/{id}', 'edit')->name('edit');
+            Route::get('show/{id}', 'show')->name('show');
+            Route::post('update/{id}', 'update')->name('update');
+            Route::get('destroy/{id}', 'destroy')->name('destroy');
+        });
+    });
+});
