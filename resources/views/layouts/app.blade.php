@@ -53,31 +53,36 @@
         <!-- ============================================================== -->
 
         <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
 
 
-            <!-- start page title -->
-            @include('layouts.blocks.title')
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+                    <!-- start page title -->
+                    @include('layouts.blocks.title')
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-            @if (Session::has('success'))
-                <p class="alert alert-info">{{ Session::get('success') }}</p>
-            @endif
-            @if (Session::has('error'))
-                <p class="alert alert-danger">{{ Session::get('error') }}</p>
-            @endif
-            <!-- end page title -->
-            @yield('content')
+                    @if (Session::has('success'))
+                        <p class="alert alert-info">{{ Session::get('success') }}</p>
+                    @endif
+                    @if (Session::has('error'))
+                        <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                    @endif
+                    <!-- end page title -->
+                    @yield('content')
 
-        </div> <!-- container -->
-
+                </div> <!-- container -->
+            </div>
+        </div>
     </div> <!-- content -->
 
     <!-- Footer Start -->

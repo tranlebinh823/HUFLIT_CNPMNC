@@ -25,11 +25,16 @@
                     <input type="text" name="name" placeholder="Name" class="form-control">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Description:</strong>
+                    <input type="text" name="description" placeholder="Description" class="form-control">
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>
 
-    <p class="text-center text-primary"><small>Tutorial by LaravelTuts.com</small></p>
 @endsection

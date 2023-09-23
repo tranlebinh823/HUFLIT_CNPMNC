@@ -17,11 +17,11 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */    public function __construct()
     {
-        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:category-delete', ['only' => ['destroy']]);
-        $this->middleware('permission:category-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:category-show', ['only' => ['pdf']]);
-        $this->middleware('permission:category-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:role-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:role-show', ['only' => ['pdf']]);
+        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.

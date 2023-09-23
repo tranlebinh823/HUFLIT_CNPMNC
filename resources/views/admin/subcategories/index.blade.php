@@ -14,7 +14,7 @@
                         <div class="card-header">
                             <h4 class="header-title">
                                 @can('subcategory-create')
-                                <a class="btn btn-info" href="{{route('admin.subcategories.create')}}">Create New Sub Category</a>
+                                <a class="btn btn-info" href="{{route('admin.subcategories.create')}}">Create New Sub </a>
                                 @endcan
                             </h4>
                             <p class="text-muted mb-0">

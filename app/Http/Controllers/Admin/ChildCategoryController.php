@@ -13,20 +13,22 @@ class ChildCategoryController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:category-delete', ['only' => ['destroy']]);
-        $this->middleware('permission:category-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:category-show', ['only' => ['pdf']]);
-        $this->middleware('permission:category-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:childcategory-list|childcategory-create|childcategory-edit|childcategory-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:childcategory-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:childcategory-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:childcategory-show', ['only' => ['pdf']]);
+        $this->middleware('permission:childcategory-delete', ['only' => ['destroy']]);
     }
     public function index()
     {
         $data['item'] = DB::table('child_categories')
-        ->join('sub_categories', 'child_categories.subcategory_id', '=', 'sub_categories.id')
-        ->select('child_categories.id', 'child_categories.childcategory_name', 'sub_categories.subcategory_name')
-        ->get();
+            ->join('sub_categories', 'child_categories.subcategory_id', '=', 'sub_categories.id')
+            ->join('categories', 'sub_categories.category_id', '=', 'categories.id')
+            ->select('child_categories.*',  'sub_categories.*', 'categories.*')
+            ->get();
         return view('admin.childcategories.index', $data);
     }
+    
     /**
      * Show the form for creating a new resource.
      */

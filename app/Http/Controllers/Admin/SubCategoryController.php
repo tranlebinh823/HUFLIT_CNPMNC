@@ -10,11 +10,11 @@ class SubCategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:category-delete', ['only' => ['destroy']]);
-        $this->middleware('permission:category-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:category-show', ['only' => ['pdf']]);
-        $this->middleware('permission:category-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:subcategory-list|subcategory-create|subcategory-edit|subcategory-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:subcategory-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:subcategory-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:subcategory-show', ['only' => ['pdf']]);
+        $this->middleware('permission:subcategory-delete', ['only' => ['destroy']]);
     }
     public function index()
     {

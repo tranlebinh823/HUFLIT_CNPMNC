@@ -4,47 +4,65 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Manage ChildCategories</h2>
-            </div>
-            <div class="pull-right">
-                @can('childcategory-create')
-                    <a class="btn btn-success" href="{{ route('admin.childcategories.create') }}"> Create New ChildCategory</a>
-                @endcan
-            </div>
-        </div>
-    </div>
-
-   
-
-    <table class="table table-bordered">
-        <tr>
-            <th>Childcategory Name</th>
-            <th>SubCateagory Name</th>
-            <th width="280px">Action</th>
-        </tr>
-        @foreach ($item as $lozchild)
-            <tr>
-                <td>{{ $lozchild->childcategory_name }}</td>
-                <td>{{ $lozchild->subcategory_name }}</td>
-                <td>
-                    <form action="{{ route('admin.childcategories.destroy', $lozchild->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('admin.childcategories.show', $lozchild->id) }}">Show</a>
-                        @can('childcategory-edit')
-                            <a class="btn btn-primary" href="{{ route('admin.childcategories.edit', $lozchild->id) }}">Edit</a>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="header-title">
+                        @can('category-create')
+                            <a class="btn btn-info" href="{{ route('admin.categories.create') }}">Create New</a>
                         @endcan
+                    </h4>
 
-                        @csrf
-                        @method('DELETE')
-                        @can('childcategory-delete')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        @endcan
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+                </div>
 
+                <div class="card-body">
+                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>ID</th>
+                                <th>Category Name</th>
+                                <th>Sub Category Name</th>
+                                <th>Child Category Name</th>
+                                <th style="text-align:center" width="280px">Action</th>
+                            </tr>
+                        </thead>
+                        @foreach ($item as $lozchild)
+                            <tbody>
+                                <tr>
+                                    <td>{{ $loop->iteration}}</td>
+                                    <td>{{ $lozchild->id }}</td>
+                                    <td>{{ $lozchild->category_name }}</td>
+                                    <td>{{ $lozchild->subcategory_name }}</td>
+                                    <td>{{ $lozchild->childcategory_name }}</td>
 
+                                    <td style="text-align:center">
+                                        <form action="{{ route('admin.childcategories.destroy', $lozchild->id) }}"
+                                            method="POST">
+                                            @can('childcategory-show')
+                                                <a class="btn btn-info"
+                                                    href="{{ route('admin.childcategories.show', $lozchild->id) }}">Show</a>
+                                            @endcan
+                                            @can('childcategory-edit')
+                                                <a class="btn btn-primary"
+                                                    href="{{ route('admin.childcategories.edit', $lozchild->id) }}">Edit</a>
+                                            @endcan
+
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('childcategory-delete')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            @endcan
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endforeach
+                    </table>
+                    </table>
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div> <!-- end row-->
 @endsection

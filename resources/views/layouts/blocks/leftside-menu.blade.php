@@ -94,11 +94,11 @@
                     <ul class="side-nav-second-level">
                     
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel" aria-expanded="false" aria-controls="sidebarSecondLevel">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel1" aria-expanded="false" aria-controls="sidebarSecondLevel1">
                                 <span>Categories</span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            <div class="collapse" id="sidebarSecondLevel">
+                            <div class="collapse" id="sidebarSecondLevel1">
                                 <ul class="side-nav-third-level">
                                     <li>
                                         <a href="{{route('admin.categories.index')}}">Categories List</a>
@@ -110,11 +110,11 @@
                             </div>
                         </li>
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarThirdLevel" aria-expanded="false" aria-controls="sidebarThirdLevel">
+                            <a data-bs-toggle="collapse" href="#sidebarThirdLevel1" aria-expanded="false" aria-controls="sidebarThirdLevel1">
                                 <span> Sub Categories</span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            <div class="collapse" id="sidebarThirdLevel">
+                            <div class="collapse" id="sidebarThirdLevel1">
                                 <ul class="side-nav-third-level">
                                     <li>
                                         <a href="{{route('admin.subcategories.index')}}">Sub Categories List</a>
@@ -126,11 +126,11 @@
                             </div>
                         </li>
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarThirdLevel" aria-expanded="false" aria-controls="sidebarThirdLevel">
+                            <a data-bs-toggle="collapse" href="#sidebarThirdLevel3" aria-expanded="false" aria-controls="sidebarThirdLevel3">
                                 <span> Child Categories</span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            <div class="collapse" id="sidebarThirdLevel">
+                            <div class="collapse" id="sidebarThirdLevel3">
                                 <ul class="side-nav-third-level">
                                     <li>
                                         <a href="{{route('admin.childcategories.index')}}">Child Categories List</a>

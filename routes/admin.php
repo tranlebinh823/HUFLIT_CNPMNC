@@ -33,8 +33,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', UserController::class);
         Route::get('dashboard',[DashboardController::class, 'quarterly'])->name('quarterly');
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-        Route::resource('permissions', PermissionController::class);
-
+        Route::prefix('permissions')->controller(PermissionController::class)->name('permissions.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::get('edit/{id}', 'edit')->name('edit');
+            Route::get('show/{id}', 'show')->name('show');
+            Route::post('update/{id}', 'update')->name('update');
+            Route::get('destroy/{id}', 'destroy')->name('destroy');
+        });
         Route::prefix('subcategories')->controller(SubCategoryController::class)->name('subcategories.')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
