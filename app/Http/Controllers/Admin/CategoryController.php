@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Category\StoreRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -35,7 +36,7 @@ class CategoryController extends Controller
         return view('admin.categories.create', $data);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();

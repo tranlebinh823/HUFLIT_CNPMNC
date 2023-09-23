@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ChildCategory\StoreRequest;
+use App\Http\Requests\Admin\ChildCategory\UpdateRequest;
 use Illuminate\Http\Request;
 
 class ChildCategoryController extends Controller
@@ -41,7 +43,7 @@ class ChildCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
@@ -77,7 +79,7 @@ class ChildCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, string $id)
     {
         $data = $request->except('_token');
         $data['updated_at'] = new \DateTime();
