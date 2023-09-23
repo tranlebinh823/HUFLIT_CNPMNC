@@ -19,12 +19,10 @@ class PermissionController extends Controller
         $this->middleware('permission:permission-delete', ['only' => ['destroy']]);
     }
 
-    public function index(Request $request): View
-    {
-        $permissions = Permission::orderBy('id', 'DESC')->paginate(5);
-        return view('admin.permissions.index', compact('permissions'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
-    }
+ public function index(){
+    $data['permissions']=DB::table('permissions')->get();
+    return view('admin.permissions.index',$data);
+}
 
     public function create(): View
     {

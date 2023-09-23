@@ -1,5 +1,6 @@
 @extends('layouts.app')
-
+@section('module', 'Permission')
+@section('action', 'Create')
 
 @section('content')
     <div class="row">

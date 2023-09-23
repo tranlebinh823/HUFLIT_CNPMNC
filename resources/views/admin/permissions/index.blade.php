@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('module', 'Permission')
+@section('action', 'List')
 
 
 @section('content')
@@ -25,7 +27,7 @@
   </tr>
     @foreach ($permissions as $key => $permission)
     <tr>
-        <td>{{ ++$i }}</td>
+
         <td>{{ $permission->name }}</td>
         <td>
             <a class="btn btn-info" href="{{ route('admin.permissions.show', $permission->id) }}">Xem</a>
@@ -48,6 +50,6 @@
     @endforeach
 </table>
 
-{!! $permissions->render() !!}
+
 
 @endsection

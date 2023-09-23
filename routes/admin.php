@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
-        
+        Route::get('dashboard',[DashboardController::class, 'quarterly'])->name('quarterly');
+        Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
         Route::resource('permissions', PermissionController::class);
 
         Route::prefix('subcategories')->controller(SubCategoryController::class)->name('subcategories.')->group(function () {

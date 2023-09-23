@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('module', 'Product')
+@section('action', 'Create')
 
 
 @section('content')

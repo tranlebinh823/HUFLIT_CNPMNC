@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('module', 'Edit')
-@section('action', 'Child Category')
+@section('module', 'Child Category')
+@section('action', 'Edit')
 
 
 

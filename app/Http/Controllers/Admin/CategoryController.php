@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -10,21 +11,22 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
+
 class CategoryController extends Controller
 {
     public function __construct()
     {
-         $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:category-create', ['only' => ['create','store']]);
-         $this->middleware('permission:category-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:category-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:category-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:category-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:category-show', ['only' => ['pdf']]);
+        $this->middleware('permission:category-delete', ['only' => ['destroy']]);
     }
 
-    public function index(): View
-    {
-        $categories = Category::latest()->paginate(5);
-        return view('admin.categories.index', compact('categories'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+    public function index(){
+        $data['item'] = DB::table('categories')->get();
+        return view('admin.categories.index',$data);
     }
 
     public function create()
@@ -60,7 +62,7 @@ class CategoryController extends Controller
         $category->update($request->all());
 
         return redirect()->route('admin.categories.index')
-            ->with('success','Category updated successfully');
+            ->with('success', 'Category updated successfully');
     }
 
     public function destroy(Category $category): RedirectResponse
@@ -68,7 +70,7 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect()->route('admin.categories.index')
-            ->with('success','Category deleted successfully');
+            ->with('success', 'Category deleted successfully');
     }
 
     // Phương thức để tạo bảng categories nếu chưa tồn tại
