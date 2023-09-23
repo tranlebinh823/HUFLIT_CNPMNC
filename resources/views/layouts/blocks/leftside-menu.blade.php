@@ -28,7 +28,7 @@
             <li class="side-nav-title">Main</li>
 
             <li class="side-nav-item">
-                <a href="index.html" class="side-nav-link">
+                <a href="{{route('admin.dashboard')}}" class="side-nav-link">
                     <i class="ri-dashboard-3-line"></i>
                     <span class="badge bg-success float-end">9+</span>
                     <span> Dashboard </span>
@@ -40,7 +40,7 @@
 
             <li class="side-nav-title">Mains</li>
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false" aria-controls="sidebarMultiLevel" class="side-nav-link">
+                <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false"  class="side-nav-link">
                     <i class="ri-share-line"></i>
                     <span> Roles & Permissons </span>
                     <span class="menu-arrow"></span>
@@ -84,7 +84,66 @@
                 </div>
             </li>
 
-
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarMultiLevel1" aria-expanded="false"  class="side-nav-link">
+                    <i class="ri-share-line"></i>
+                    <span>Manage Categories</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarMultiLevel1">
+                    <ul class="side-nav-second-level">
+                    
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel" aria-expanded="false" aria-controls="sidebarSecondLevel">
+                                <span>Categories</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarSecondLevel">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="{{route('admin.categories.index')}}">Categories List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('admin.categories.create')}}">Categories Create</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarThirdLevel" aria-expanded="false" aria-controls="sidebarThirdLevel">
+                                <span> Sub Categories</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarThirdLevel">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="{{route('admin.subcategories.index')}}">Sub Categories List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('admin.subcategories.create')}}">Sub Categories Create</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarThirdLevel" aria-expanded="false" aria-controls="sidebarThirdLevel">
+                                <span> Child Categories</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarThirdLevel">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="{{route('admin.childcategories.index')}}">Child Categories List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('admin.childcategories.create')}}">Child Categories Create</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         </ul>
         <!--- End Sidemenu -->
 
