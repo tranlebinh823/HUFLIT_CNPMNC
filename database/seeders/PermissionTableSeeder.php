@@ -1,11 +1,11 @@
 <?php
-  
+
 namespace Database\Seeders;
-  
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
-  
+
 class PermissionTableSeeder extends Seeder
 {
     /**
@@ -14,30 +14,53 @@ class PermissionTableSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
-           'role-list',
-           'role-create',
-           'role-edit',
-           'role-delete',
-           'permission-list',
-           'permission-create',
-           'permission-edit',
-           'permission-delete',
-           'category-list',
-           'category-create',
-           'category-edit',
-           'category-delete',
-           'subcategory-list',
-           'subcategory-create',
-           'subcategory-edit',
-           'subcategory-delete',
-           'childcategory-list',
-           'childcategory-create',
-           'childcategory-edit',
-           'childcategory-delete',
+            'role-list',
+            'role-create',
+            'role-edit',
+            'role-delete',
+            'role-show',
+
+            'permission-list',
+            'permission-create',
+            'permission-edit',
+            'permission-delete',
+            'permission-show',
+
+            'category-list',
+            'category-create',
+            'category-edit',
+            'category-delete',
+            'category-show',
+
+            'subcategory-list',
+            'subcategory-create',
+            'subcategory-edit',
+            'subcategory-delete',
+            'subcategory-show',
+
+            'childcategory-list',
+            'childcategory-create',
+            'childcategory-edit',
+            'childcategory-delete',
+            'childcategory-show',
+
+            'dashboard-list',
+
+            'product-list',
+            'product-create',
+            'product-edit',
+            'product-delete',
+            'product-show',
+
+            'productimage-list',
+            'productimage-create',
+            'productimage-edit',
+            'productimage-delete',
+            'productimage-show',
         ];
-        
+
         foreach ($permissions as $permission) {
-             Permission::create(['name' => $permission]);
+            Permission::create(['name' => $permission]);
         }
     }
-}   
+}
