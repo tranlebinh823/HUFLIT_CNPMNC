@@ -17,7 +17,7 @@
                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                     <thead>
                         <tr>
-                            <th>STT</th>
+                            <th>STT 123123</th>
                             <th>ID</th>
                             <th>Logo</th>
                             <th>Name</th>
