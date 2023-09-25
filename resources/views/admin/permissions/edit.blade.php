@@ -17,14 +17,14 @@
 
   
 
-    <form action="{{ route('admin.permissions.update', $permission->id) }}" method="POST">
+    <form action="{{ route('admin.permissions.update',['id'=>$item->id]) }}" method="POST">
         @csrf
-        @method('PUT')
+   
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" value="{{ $permission->name }}" class="form-control">
+                    <input type="text" name="name" value="{{ $item->name }}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -33,5 +33,4 @@
         </div>
     </form>
 
-    <p class="text-center text-primary"><small>Tutorial by LaravelTuts.com</small></p>
 @endsection

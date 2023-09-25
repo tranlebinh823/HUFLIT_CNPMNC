@@ -19,10 +19,11 @@ class PermissionController extends Controller
         $this->middleware('permission:permission-delete', ['only' => ['destroy']]);
     }
 
- public function index(){
-    $data['permissions']=DB::table('permissions')->get();
-    return view('admin.permissions.index',$data);
-}
+    public function index()
+    {
+        $data['permissions'] = DB::table('permissions')->get();
+        return view('admin.permissions.index', $data);
+    }
 
     public function create(): View
     {
@@ -50,23 +51,19 @@ class PermissionController extends Controller
 
     public function edit($id): View
     {
-        $permission = Permission::find($id);
-
-        return view('admin.permissions.edit', compact('permission'));
+        $data['item'] = DB::table('permissions')
+            ->where('id', $id)
+            ->first();
+        return view('admin.permissions.edit', $data);
     }
 
     public function update(Request $request, $id): RedirectResponse
     {
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
+        $data = $request->except('_token');
 
-        $permission = Permission::find($id);
-        $permission->name = $request->input('name');
-        $permission->save();
-
-        return redirect()->route('admin.permissions.index')
-            ->with('success', 'Permission updated successfully');
+        $data['updated_at'] = now();
+        DB::table('permissions')->where('id', $id)->update($data);
+        return redirect()->route('admin.permissions.index')->with('success', 'Chỉnh sửa thành công');
     }
 
     public function destroy($id): RedirectResponse

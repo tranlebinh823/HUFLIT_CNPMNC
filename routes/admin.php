@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\VendorController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
         Route::get('dashboard',[DashboardController::class, 'quarterly'])->name('quarterly');
-        Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+        Route::get('dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
         Route::prefix('permissions')->controller(PermissionController::class)->name('permissions.')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
@@ -61,6 +63,33 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('destroy/{id}', 'destroy')->name('destroy');
         });
         Route::prefix('categories')->controller(CategoryController::class)->name('categories.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::get('edit/{id}', 'edit')->name('edit');
+            Route::get('show/{id}', 'show')->name('show');
+            Route::post('update/{id}', 'update')->name('update');
+            Route::get('destroy/{id}', 'destroy')->name('destroy');
+        });
+        Route::prefix('products')->controller(Product::class)->name('products.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::get('edit/{id}', 'edit')->name('edit');
+            Route::get('show/{id}', 'show')->name('show');
+            Route::post('update/{id}', 'update')->name('update');
+            Route::get('destroy/{id}', 'destroy')->name('destroy');
+        });
+        Route::prefix('vendors')->controller(VendorController::class)->name('vendors.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::get('edit/{id}', 'edit')->name('edit');
+            Route::get('show/{id}', 'show')->name('show');
+            Route::post('update/{id}', 'update')->name('update');
+            Route::get('destroy/{id}', 'destroy')->name('destroy');
+        });
+        Route::prefix('brands')->controller(BrandController::class)->name('brands.')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');

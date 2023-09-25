@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SubCategory\StoreRequest;
 use App\Http\Requests\Admin\SubCategory\UpdateRequest;
 use Illuminate\Http\Request;
-
+use App\Models\Category;
 class SubCategoryController extends Controller
 {
     public function __construct()
@@ -31,10 +31,9 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $data['item'] = DB::table('categories')->get();
-        return view('admin.subcategories.create', $data);
+        $categories = Category::all();
+        return view('admin.subcategories.create', compact('categories'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -60,7 +59,7 @@ class SubCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(UpdateRequest $id)
     {
         $data['item_cat'] = DB::table('categories')->get();
 

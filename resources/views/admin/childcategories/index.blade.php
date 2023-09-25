@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <h4 class="header-title">
                         @can('category-create')
-                            <a class="btn btn-info" href="{{ route('admin.categories.create') }}">Create New</a>
+                            <a class="btn btn-info" href="{{ route('admin.childcategories.create') }}">Create New</a>
                         @endcan
                     </h4>
 
