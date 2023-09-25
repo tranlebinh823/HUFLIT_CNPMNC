@@ -3,7 +3,10 @@
 @section('action','List')
 @section('content')
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
@@ -16,6 +19,9 @@
         </div>
     </div>
 </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
             <div class="row">
