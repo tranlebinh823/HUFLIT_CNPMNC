@@ -20,7 +20,11 @@ class VendorController extends Controller
 
     public function index()
     {
-        $data['item'] = DB::table('vendors')->get();
+        $data['item'] = DB::table('vendors')
+        ->join('users', 'vendors.user_id', '=', 'users.id')
+        ->join('categories', 'vendors.category_shop_id', '=', 'categories.id')
+        ->select('vendors.*',  'users.*', 'categories.*')
+        ->get();
         return view('admin.vendors.index', $data);
     }
 
@@ -59,8 +63,6 @@ class VendorController extends Controller
     {
         $data = $request->except('_token');
        
-       
-        
         $data['updated_at'] = now();
         DB::table('vendors')->where('id', $id)->update($data);
         return redirect()->route('admin.vendors.index')->with('success', 'Chỉnh sửa thành công');

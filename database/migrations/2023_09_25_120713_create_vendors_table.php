@@ -23,13 +23,14 @@ return new class extends Migration
             $table->text('tw_link')->nullable();
             $table->text('insta_link')->nullable();
             //! Category shop
-          
             $table->unsignedBigInteger('category_shop_id')->nullable();
             $table->foreign('category_shop_id')->references('id')->on('categories');
             //! User shop
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            
             $table->boolean('status')->default(0);
+            $table->timestamps();
         });
     }
 

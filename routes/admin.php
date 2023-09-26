@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\VendorController;
 use Illuminate\Support\Facades\Auth;
@@ -71,7 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('update/{id}', 'update')->name('update');
             Route::get('destroy/{id}', 'destroy')->name('destroy');
         });
-        Route::prefix('products')->controller(Product::class)->name('products.')->group(function () {
+        Route::prefix('products')->controller(ProductController::class)->name('products.')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
