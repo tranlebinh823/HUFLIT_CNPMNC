@@ -15,6 +15,7 @@ class BrandController extends Controller
         $this->middleware('permission:brand-list|brand-create|brand-edit|brand-delete', ['only' => ['index', 'show']]);
         $this->middleware('permission:brand-delete', ['only' => ['destroy']]);
         $this->middleware('permission:brand-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:brand-show', ['only' => ['show']]);
     }
 
     public function index()

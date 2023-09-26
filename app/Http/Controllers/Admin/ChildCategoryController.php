@@ -18,8 +18,7 @@ class ChildCategoryController extends Controller
         $this->middleware('permission:childcategory-list|childcategory-create|childcategory-edit|childcategory-delete', ['only' => ['index', 'show']]);
         $this->middleware('permission:childcategory-delete', ['only' => ['destroy']]);
         $this->middleware('permission:childcategory-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:childcategory-show', ['only' => ['pdf']]);
-        $this->middleware('permission:childcategory-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:childcategory-show', ['only' => ['show']]);
     }
     public function index()
     {

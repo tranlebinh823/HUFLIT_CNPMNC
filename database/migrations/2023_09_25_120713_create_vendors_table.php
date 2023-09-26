@@ -14,17 +14,18 @@ return new class extends Migration
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
             $table->text('banner');
-            $table->text('Category_shops');
+            $table->text('shop_name');
             $table->string('phone');
             $table->string('email');
             $table->text('address');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->text('fb_link')->nullable();
             $table->text('tw_link')->nullable();
             $table->text('insta_link')->nullable();
             //! Category shop
-            $table->unsignedBigInteger('Category_shop_id')->nullable();
-            $table->foreign('Category_shop_id')->references('id')->on('Categories');
+          
+            $table->unsignedBigInteger('category_shop_id')->nullable();
+            $table->foreign('category_shop_id')->references('id')->on('categories');
             //! User shop
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');

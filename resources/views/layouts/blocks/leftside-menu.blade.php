@@ -10,7 +10,7 @@
         </span>
     </a>
 
-    
+
 
     <!-- Sidebar -left -->
     <div class="h-100" id="leftside-menu-container" data-simplebar>
@@ -137,7 +137,7 @@
                 </div>
             </li>
 
-          
+
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarMultiLevel2" aria-expanded="false" class="side-nav-link">
                     <i class="ri-share-line"></i>
@@ -148,7 +148,7 @@
                     <ul class="side-nav-second-level">
 
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.1" aria-expanded="false" aria-controls="sidebarSecondLevel1">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.1" aria-expanded="false" aria-controls="sidebarSecondLevel2.1">
                                 <span>Products</span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -164,7 +164,7 @@
                             </div>
                         </li>
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.2" aria-expanded="false" aria-controls="sidebarSecondLevel1">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.2" aria-expanded="false" aria-controls="sidebarSecondLevel2.2">
                                 <span>Products Image</span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -179,18 +179,18 @@
                                 </ul>
                             </div>
                         </li>
-                       <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.3" aria-expanded="false" aria-controls="sidebarSecondLevel1">
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.3" aria-expanded="false" aria-controls="sidebarSecondLevel2.3">
                                 <span>Products Brand</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarSecondLevel2.3">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="{{route('admin.brands.index')}}">Products Image List</a>
+                                        <a href="{{route('admin.brands.index')}}">Products Brand List</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.brands.create')}}">Products Image Create</a>
+                                        <a href="{{route('admin.brands.create')}}">Products Brand Create</a>
                                     </li>
                                 </ul>
                             </div>
@@ -198,6 +198,44 @@
                     </ul>
                 </div>
             </li>
+
+            @if (Auth::user()->name === 'vendor')
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarMultiLevel3" aria-expanded="false" class="side-nav-link">
+                    <i class="ri-share-line"></i>
+                    <span> Vendors </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarMultiLevel3">
+                    <ul class="side-nav-second-level">
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel3" aria-expanded="false" aria-controls="sidebarSecondLevel3">
+                                <span>Vendor</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarSecondLevel3">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="{{route('admin.vendors.index')}}">Vendor List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('admin.vendors.create')}}">Vendor Create</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+            @endif
+
+
+
+
+
+
         </ul>
         <!--- End Sidemenu -->
 
