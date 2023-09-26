@@ -16,7 +16,7 @@
             <div class="card-body">
                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                     <thead>
-                        <tr>
+                        <tr  style="text-align:center">
                             <th>STT</th>
                             <th>ID</th>
                             <th>Logo</th>
@@ -28,12 +28,12 @@
                             <th style="text-align:center">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         @foreach ($item as $i)
-                        <tr>
+                        <tr  style="text-align:center">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $i->id }}</td>
-                            <td><img src="{{ asset('upload/' . $i->logo) }}" alt="avatar" width="120"></td>
+                            <td><img src="{{ asset('upload/' . $i->logo) }}" alt="avatar" height="120" width="120"></td>
                             <td>{{ $i->name }}</td>
                             <td>{{ $i->slug }}</td>
                             <td>{{ $i->is_featured ? 'Yes' : 'No' }}</td>

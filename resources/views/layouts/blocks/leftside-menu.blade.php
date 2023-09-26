@@ -10,7 +10,7 @@
         </span>
     </a>
 
-    
+
 
     <!-- Sidebar -left -->
     <div class="h-100" id="leftside-menu-container" data-simplebar>
@@ -30,7 +30,7 @@
 
 
 
-            <li class="side-nav-title">Mains</li>
+            <li class="side-nav-title">Management</li>
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false" class="side-nav-link">
                     <i class="ri-share-line"></i>
@@ -42,32 +42,32 @@
 
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarSecondLevel" aria-expanded="false" aria-controls="sidebarSecondLevel">
-                                <span>Roles</span>
+                                <span>Role</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarSecondLevel">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="{{route('admin.roles.index')}}">Roles List</a>
+                                        <a href="{{route('admin.roles.index')}}">List</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.roles.create')}}">Roles Create</a>
+                                        <a href="{{route('admin.roles.create')}}">Create</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarThirdLevel" aria-expanded="false" aria-controls="sidebarThirdLevel">
-                                <span> Permissions</span>
+                                <span> Permission</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarThirdLevel">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="{{route('admin.permissions.index')}}">Permissions List</a>
+                                        <a href="{{route('admin.permissions.index')}}">List</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.permissions.create')}}">Permissions Create</a>
+                                        <a href="{{route('admin.permissions.create')}}">Create</a>
                                     </li>
                                 </ul>
                             </div>
@@ -79,7 +79,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarMultiLevel1" aria-expanded="false" class="side-nav-link">
                     <i class="ri-share-line"></i>
-                    <span>Manage Categories</span>
+                    <span>Manage Shop Categories</span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarMultiLevel1">
@@ -87,16 +87,47 @@
 
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarSecondLevel1" aria-expanded="false" aria-controls="sidebarSecondLevel1">
-                                <span>Categories</span>
+                                <span>Category</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarSecondLevel1">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="{{route('admin.categories.index')}}">Categories List</a>
+                                        <a href="{{route('admin.categories.index')}}">List</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.categories.create')}}">Categories Create</a>
+                                        <a href="{{route('admin.categories.create')}}">Create</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </li>
+
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarMultiLevel2" aria-expanded="false" class="side-nav-link">
+                    <i class="ri-share-line"></i>
+                    <span>Products</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarMultiLevel2">
+                    <ul class="side-nav-second-level">
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.1" aria-expanded="false" aria-controls="sidebarSecondLevel2.1">
+                                <span>Product</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarSecondLevel2.1">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="{{route('admin.products.index')}}">List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('admin.products.create')}}">Create</a>
                                     </li>
                                 </ul>
                             </div>
@@ -109,10 +140,10 @@
                             <div class="collapse" id="sidebarThirdLevel1">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="{{route('admin.subcategories.index')}}">Sub Categories List</a>
+                                        <a href="{{route('admin.subcategories.index')}}">List</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.subcategories.create')}}">Sub Categories Create</a>
+                                        <a href="{{route('admin.subcategories.create')}}">Create</a>
                                     </li>
                                 </ul>
                             </div>
@@ -125,72 +156,42 @@
                             <div class="collapse" id="sidebarThirdLevel3">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="{{route('admin.childcategories.index')}}">Child Categories List</a>
+                                        <a href="{{route('admin.childcategories.index')}}">List</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.childcategories.create')}}">Child Categories Create</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-          
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarMultiLevel2" aria-expanded="false" class="side-nav-link">
-                    <i class="ri-share-line"></i>
-                    <span>Manage Products</span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarMultiLevel2">
-                    <ul class="side-nav-second-level">
-
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.1" aria-expanded="false" aria-controls="sidebarSecondLevel1">
-                                <span>Products</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarSecondLevel2.1">
-                                <ul class="side-nav-third-level">
-                                    <li>
-                                        <a href="{{route('admin.brands.index')}}">Products List</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('admin.brands.create')}}">Products Create</a>
+                                        <a href="{{route('admin.childcategories.create')}}">Create</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.2" aria-expanded="false" aria-controls="sidebarSecondLevel1">
-                                <span>Products Image</span>
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.2" aria-expanded="false" aria-controls="sidebarSecondLevel2.2">
+                                <span>Image</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarSecondLevel2.2">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="{{route('admin.brands.index')}}">Products Image List</a>
+                                        <a href="{{route('admin.brands.index')}}">List</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.brands.create')}}">Products Image Create</a>
+                                        <a href="{{route('admin.brands.create')}}">Create</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                       <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.3" aria-expanded="false" aria-controls="sidebarSecondLevel1">
-                                <span>Products Brand</span>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel2.3" aria-expanded="false" aria-controls="sidebarSecondLevel2.3">
+                                <span>Brand</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarSecondLevel2.3">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="{{route('admin.brands.index')}}">Products Image List</a>
+                                        <a href="{{route('admin.brands.index')}}">List</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.brands.create')}}">Products Image Create</a>
+                                        <a href="{{route('admin.brands.create')}}">Create</a>
                                     </li>
                                 </ul>
                             </div>
@@ -198,6 +199,41 @@
                     </ul>
                 </div>
             </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarMultiLevel3" aria-expanded="false" class="side-nav-link">
+                    <i class="ri-share-line"></i>
+                    <span> Vendors </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarMultiLevel3">
+                    <ul class="side-nav-second-level">
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel3" aria-expanded="false" aria-controls="sidebarSecondLevel3">
+                                <span>Vendor</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarSecondLevel3">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="{{route('admin.vendors.index')}}">List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('admin.vendors.create')}}">Create</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+      
+
+
+
+
         </ul>
         <!--- End Sidemenu -->
 
