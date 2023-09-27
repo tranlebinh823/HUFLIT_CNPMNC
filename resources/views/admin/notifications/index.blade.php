@@ -1,0 +1,12 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1>Notifications</h1>
+    @foreach ($notifications as $notification)
+        <div class="alert alert-primary" role="alert">
+            {!! $notification->message !!}
+        </div>
+    @endforeach
+</div>
+@endsection

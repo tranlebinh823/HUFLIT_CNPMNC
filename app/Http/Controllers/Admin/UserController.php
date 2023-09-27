@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use App\Models\Notification;
 
 class UserController extends Controller
 {
@@ -60,14 +62,34 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         $text = "A new contact us query\n"
-        . "<b>Email Address: </b>\n"
-        . "$request->email\n"
-        . "<b>Name: </b>\n"
-        . "$request->name\n"
-        . "<b>Password: </b>\n"
-        . bcrypt($request->password);
+            . "<b>Email Address: </b>\n"
+            . "$request->email\n"
+            . "<b>Name: </b>\n"
+            . "$request->name\n"
+            . "<b>Password: </b>\n"
+            . bcrypt($request->password);
 
+        // // Đếm số lượng thông báo hiện có từ phiên làm việc
+        // $notificationCount = session('notification_count', 0);
 
+        // // Tăng số lượng thông báo lên một đơn vị
+        // $notificationCount++;
+
+        // // Đặt số lượng thông báo vào session
+        // session()->put('notification_count', $notificationCount);
+        // session()->flash('notification_message', 'Tài khoản khách hàng mới đã được tạo.');
+
+        // Tạo một thông báo mới và lưu vào cơ sở dữ liệu
+        $notification = new Notification();
+        $notification->message = "A new user has been created: $user->name";
+        $notification->save();
+
+        // Đếm số lượng thông báo hiện có từ cơ sở dữ liệu
+        $notificationCount = Notification::count();
+
+        // Đặt số lượng thông báo vào session hoặc cơ sở dữ liệu
+        session()->put('notification_count', $notificationCount);
+        
         Telegram::sendMessage([
             'chat_id' => env('TELEGRAM_CHANNEL_ID', ''),
             'parse_mode' => 'HTML',

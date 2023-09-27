@@ -102,7 +102,12 @@
     <!-- Theme Settings -->
     @include('layouts.blocks.theme-setting')
 
-
+    <script>
+        // Gọi hàm để tải thông báo khi trang được tải
+        $(document).ready(function() {
+            loadNotifications();
+        });
+    </script>
 
     <script src="{{ asset('administrator/assets/js/vendor.min.js') }}"></script>
 
