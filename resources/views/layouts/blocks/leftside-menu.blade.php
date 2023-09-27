@@ -79,7 +79,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarMultiLevel1" aria-expanded="false" class="side-nav-link">
                     <i class="ri-share-line"></i>
-                    <span>Shop Categories</span>
+                    <span>Manage Shop Categories</span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarMultiLevel1">

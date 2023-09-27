@@ -10,6 +10,7 @@
         "barryvdh/laravel-snappy": "^1.0",
         "dompdf/dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
+        "irazasyed/telegram-bot-sdk": "^3.13",
         "knplabs/knp-snappy": "^1.4",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-    
+use Telegram\Bot\Laravel\Facades\Telegram;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
-    
+
 class UserController extends Controller
 {
     /**
@@ -22,11 +22,11 @@ class UserController extends Controller
     public function index(Request $request): View
     {
         $data = User::latest()->paginate(5);
-  
-        return view('admin.users.index',compact('data'))
+
+        return view('admin.users.index', compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -34,10 +34,10 @@ class UserController extends Controller
      */
     public function create(): View
     {
-        $roles = Role::all(); 
-        return view('admin.users.create',compact('roles'));
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,17 +52,31 @@ class UserController extends Controller
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
-    
+
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-    
+
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-    
+
+        $text = "A new contact us query\n"
+        . "<b>Email Address: </b>\n"
+        . "$request->email\n"
+        . "<b>Name: </b>\n"
+        . "$request->name\n"
+        . "<b>Password: </b>\n"
+        . bcrypt($request->password);
+
+
+        Telegram::sendMessage([
+            'chat_id' => env('TELEGRAM_CHANNEL_ID', ''),
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);
         return redirect()->route('admin.users.index')
-                        ->with('success','User created successfully');
+            ->with('success', 'User created successfully');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -72,9 +86,9 @@ class UserController extends Controller
     public function show($id): View
     {
         $user = User::find($id);
-        return view('admin.users.show',compact('user'));
+        return view('admin.users.show', compact('user'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -84,12 +98,12 @@ class UserController extends Controller
     public function edit($id): View
     {
         $user = User::find($id);
-        $roles = Role::all(); 
-        $userRole = $user->roles->pluck('name','name')->all();
-    
-        return view('admin.users.edit',compact('user','roles','userRole'));
+        $roles = Role::all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
+
+        return view('admin.users.edit', compact('user', 'roles', 'userRole'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -101,28 +115,28 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
-    
+
         $input = $request->all();
-        if(!empty($input['password'])){ 
+        if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));    
+        } else {
+            $input = Arr::except($input, array('password'));
         }
-    
+
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
+
         $user->assignRole($request->input('roles'));
-    
+
         return redirect()->route('admin.users.index')
-                        ->with('success','User updated successfully');
+            ->with('success', 'User updated successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -133,6 +147,6 @@ class UserController extends Controller
     {
         User::find($id)->delete();
         return redirect()->route('admin.users.index')
-                        ->with('success','User deleted successfully');
+            ->with('success', 'User deleted successfully');
     }
 }
