@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\VendorController;
+use App\Http\Controllers\TelegramController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +35,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
-        Route::get('dashboard',[DashboardController::class, 'quarterly'])->name('quarterly');
-        Route::get('dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
+        Route::get('dashboard', [DashboardController::class, 'quarterly'])->name('quarterly');
+        Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
         Route::prefix('permissions')->controller(PermissionController::class)->name('permissions.')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
@@ -101,3 +102,6 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 });
+Route::get('updated-activity', [TelegramController::class, 'updatedActivity'])->name('updatedActivity');
+Route::get('contact', [TelegramController::class, 'contactForm'])->name('contactForm');
+Route::post('send-message', [TelegramController::class, 'sendMessage'])->name('sendMessage');

@@ -7,7 +7,7 @@
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2>Add New Product</h2>
-        </div>
+        </d
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
         </div>
