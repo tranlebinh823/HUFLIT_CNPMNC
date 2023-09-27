@@ -4,9 +4,9 @@ namespace App\Http\View\Composer;
 
 use Illuminate\View\View;
 use App\Models\Notification;
-use Illuminate\Console\View\Components\Component;
 
-class NotificationsComposer 
+
+class NotificationsComposer
 {
     public function compose(View $view)
     {

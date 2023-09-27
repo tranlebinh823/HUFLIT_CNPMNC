@@ -18,7 +18,7 @@ class NotificationsComposerServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      */
-    public function boot(): void
+    public function boot()
     {
         View::composer(['layouts.app'], 'App\Http\View\Composers\NotificationsComposer');
     }

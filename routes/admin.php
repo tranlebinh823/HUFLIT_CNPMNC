@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
         Route::resource('notifications', NotificationController::class);
+
         Route::get('dashboard', [DashboardController::class, 'quarterly'])->name('quarterly');
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
         Route::prefix('permissions')->controller(PermissionController::class)->name('permissions.')->group(function () {

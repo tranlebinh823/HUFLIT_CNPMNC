@@ -200,11 +200,14 @@
                         </div>
                     </div>
 
-                    @foreach ($notifications as $notification)
-                    <div class="alert alert-primary" role="alert">
-                        {!! $notification->message !!}
-                    </div>
-                @endforeach
+
+                        @foreach ($notifications as $notification)
+                            <div class="alert alert-primary" role="alert">
+                                {!! $notification->message !!}
+                            </div>
+                        @endforeach
+             
+
 
 
                     <!-- All-->
