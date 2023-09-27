@@ -38,14 +38,9 @@
                     <span></span>
                 </div>
             </button>
-
-
         </div>
 
         <ul class="topbar-menu d-flex align-items-center gap-3">
-
-
-
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
@@ -56,7 +51,7 @@
                     <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="m-0 fs-16 fw-semibold"> Messages</h6>
+                                <h6 class="m-0 fs-16 fw-semibold">Messages</h6>
                             </div>
                             <div class="col-auto">
                                 <a href="javascript: void(0);" class="text-dark text-decoration-underline">
@@ -67,7 +62,6 @@
                     </div>
 
                     <div style="max-height: 300px;" data-simplebar>
-
                         <!-- item-->
                         <a href="javascript:void(0);"
                             class="dropdown-item p-0 notify-item read-noti card m-0 shadow-none">
@@ -176,7 +170,6 @@
                         class="dropdown-item text-center text-primary text-decoration-underline fw-bold notify-item border-top border-light py-2">
                         View All
                     </a>
-
                 </div>
             </li>
 
@@ -190,7 +183,7 @@
                     <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="m-0 fs-16 fw-semibold"> Notification</h6>
+                                <h6 class="m-0 fs-16 fw-semibold">Notification</h6>
                             </div>
                             <div class="col-auto">
                                 <a href="javascript: void(0);" class="text-dark text-decoration-underline">
@@ -236,7 +229,7 @@
                             <div class="notify-icon bg-pink-subtle">
                                 <i class="mdi mdi-comment-account-outline text-pink"></i>
                             </div>
-                            <p class="notify-details">Caleb Flakelar commented on Admi
+                            <p class="notify-details">Caleb Flakelar commented on Admin
                                 <small class="noti-time">4 days ago</small>
                             </p>
                         </a>
@@ -267,7 +260,6 @@
                         class="dropdown-item text-center text-primary text-decoration-underline fw-bold notify-item border-top border-light py-2">
                         View All
                     </a>
-
                 </div>
             </li>
 
@@ -283,10 +275,7 @@
                 </div>
             </li>
 
-         
-                    @auth
-
-
+            @auth
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -306,8 +295,6 @@
                     </div>
                 </li>
             @endauth
+        </ul>
     </div>
-
-    </ul>
-</div>
 </div>

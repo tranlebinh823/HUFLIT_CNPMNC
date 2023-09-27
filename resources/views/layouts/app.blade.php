@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('module', 'Dashboard') @yield('action')</title>
-    @include('layouts.blocks.head')
+
     <!-- Datatables css -->
     <link href="{{ asset('administrator/assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}"
         rel="stylesheet" type="text/css" />
@@ -84,11 +84,11 @@
             </div>
         </div>
     </div> <!-- content -->
-
     <!-- Footer Start -->
     @include('layouts.blocks.footer')
 
     <!-- end Footer -->
+
 
     </div>
 
