@@ -263,7 +263,7 @@
         document.getElementById('images').addEventListener('change', function() {
             // Kiểm tra xem người dùng đã chọn tệp hình ảnh chưa
             if (this.files && this.files[0]) {
-                var reader = new FileReader(); 
+                var reader = new FileReader();
 
                 // Lắng nghe sự kiện khi tệp hình ảnh được load hoàn tất
                 reader.onload = function(e) {

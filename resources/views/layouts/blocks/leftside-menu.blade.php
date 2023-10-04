@@ -87,31 +87,24 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#11" aria-expanded="false" class="side-nav-link">
                     <i class="ri-share-line"></i>
-                    <span> Products </span>
+                    <span> Sản Phẩm </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="11">
-                    <ul class="side-nav-second-level">
 
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#22" aria-expanded="false" aria-controls="22">
-                                <span>Product</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="22">
-                                <ul class="side-nav-third-level">
-                                    <li>
-                                        <a href="{{ route('admin.products.index') }}">List</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.products.create') }}">Create</a>
-                                    </li>
-                                </ul>
-                            </div>
+
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="{{ route('admin.products.index') }}">Danh Sách</a>
                         </li>
-
-
+                        <li>
+                            <a href="{{ route('admin.products.create') }}">Tạo</a>
+                        </li>
                     </ul>
+
+
+
+
                 </div>
             </li>
 

@@ -3,7 +3,7 @@
 @section('action', 'List')
 
 @section('content')
-  
+
     <div class="content">
         <!-- Start Content-->
         <div class="container-fluid">
@@ -37,19 +37,7 @@
                     </div>
                 </div>
 
-                <div class="col-xxl-3 col-sm-6">
-                    <div class="card widget-flat text-bg-primary">
-                        <div class="card-body">
-                            <div class="float-end">
-                                <i class="ri-eye-line widget-icon"></i>
-                            </div>
-                            <h6 class="text-uppercase mt-0" title="Category">Total ChildCategories</h6>
-                            <h2 class="my-2">{{ $childcategoryCount }}</h2>
-                            <span class="text-nowrap">({{ $startDate->format('F Y') }} to
-                                {{ $endDate->format('F Y') }})</span>
-                        </div>
-                    </div>
-                </div>
+             
 
                 <div class="col-xxl-3 col-sm-6">
                     <div class="card widget-flat text-bg-info">

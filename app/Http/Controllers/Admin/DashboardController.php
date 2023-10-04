@@ -23,15 +23,11 @@ class DashboardController extends Controller
             ->whereBetween('created_at', [$startDate, $endDate])
             ->count();
 
-        $childcategoryCount = DB::table('child_categories')
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->count();
-
         $permissionCount = DB::table('permissions')
             ->whereBetween('created_at', [$startDate, $endDate])
             ->count();
 
-      
+
 
         // Query the database to get category creation data by month
         $categoryData = DB::table('categories')
@@ -57,6 +53,6 @@ class DashboardController extends Controller
             $monthIndex = intval($item->month) - 1;
             $categoryCounts[$monthIndex] = $item->count;
         }
-        return view('admin.dashboard', compact('months', 'categoryCounts', 'startDate', 'endDate', 'categoryCount', 'subcategoryCount', 'childcategoryCount', 'permissionCount'));
+        return view('admin.dashboard', compact('months', 'categoryCounts', 'startDate', 'endDate', 'categoryCount', 'subcategoryCount', 'permissionCount'));
     }
 }

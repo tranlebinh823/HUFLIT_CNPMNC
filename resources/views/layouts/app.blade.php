@@ -38,7 +38,7 @@
     <!-- Begin page -->
     <div class="wrapper">
 
-  
+
 
         <!-- ========== Topbar Start ========== -->
         @include('layouts.blocks.navbar-custom')

@@ -30,6 +30,9 @@
                                 <div class="col-9">
                                     <input type="text" class="form-control" id="subcategory_name" name="subcategory_name"
                                         placeholder="">
+                                    @error('subcategory_name')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
