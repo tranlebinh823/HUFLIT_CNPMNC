@@ -4,10 +4,7 @@
 
 @section('content')
 
-    <!-- Quill css -->
-    <link href="{{ asset('administrator/assets/vendor/quill/quill.core.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('administrator/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('administrator/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet" type="text/css" />
+
 
 
     <form method="POST" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
@@ -76,24 +73,33 @@
                                             data-bs-placement="right" title="Select Image">
 
                                         </label>
-                                        <input type="file" name="images">
+                                        <input type="file" name="images" id="images">
+
                                     </div>
+                                    <img id="image-preview" src="" alt="Preview"
+                                        style="display: none; max-width: 100px; max-height: 100px;">
 
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="mb-4">
                             <h5 class="fs-14 mb-1">Product Gallery</h5>
                             <p class="text-muted">Add Product Gallery Images.</p>
-
                             <div class="dropzone">
                                 <div class="fallback">
-                                    <input type="file" name="images_gallery[]" multiple>
+                                    <div class="text-center">
+                                        <div class="position-relative d-inline-block">
+                                            <div class="position-absolute top-100 start-100 translate-middle">
+                                                <input type="file" name="images_gallery[]" id="image-gallery-input"
+                                                    multiple>
+                                            </div>
+                                        </div>
+                                        <div class="image-gallery-preview">
+                                            <!-- Dùng để hiển thị 4 hình ảnh trước -->
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -241,10 +247,7 @@
         </div>
     </form>
     <!-- Quill Editor js -->
-    <script src="{{ asset('administrator/assets/vendor/quill/quill.min.js') }}"></script>
 
-    <!-- Quill Demo js -->
-    <script src="{{ asset('administrator/assets/js/pages/quilljs.init.js') }}"></script>
     <script>
         // Lắng nghe sự kiện khi nhập "product_name"
         document.getElementById('product_name').addEventListener('input', function() {
@@ -254,6 +257,50 @@
 
             // Cập nhật giá trị "slug" lên giao diện người dùng
             document.getElementById('slug').value = slug;
+        });
+
+
+        document.getElementById('images').addEventListener('change', function() {
+            // Kiểm tra xem người dùng đã chọn tệp hình ảnh chưa
+            if (this.files && this.files[0]) {
+                var reader = new FileReader(); 
+
+                // Lắng nghe sự kiện khi tệp hình ảnh được load hoàn tất
+                reader.onload = function(e) {
+                    // Hiển thị hình ảnh trước bằng cách cập nhật src của <img> element
+                    var previewImage = document.getElementById('image-preview');
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block'; // Hiển thị hình ảnh
+                };
+
+                // Đọc và hiển thị tệp hình ảnh
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        document.getElementById('image-gallery-input').addEventListener('change', function() {
+            var previewContainer = document.querySelector('.image-gallery-preview');
+            previewContainer.innerHTML = ''; // Xóa bất kỳ hình ảnh trước nào
+
+            // Kiểm tra xem người dùng đã chọn tệp hình ảnh chưa
+            if (this.files && this.files.length > 0) {
+                for (let i = 0; i < Math.min(4, this.files.length); i++) {
+                    var reader = new FileReader();
+
+                    // Khởi tạo đối tượng hình ảnh ở đây, trong vòng lặp
+                    var image = document.createElement('img');
+                    image.style.maxWidth = '100px'; // Điều chỉnh kích thước tối đa của hình ảnh
+                    image.style.maxHeight = '100px';
+
+                    reader.onload = function(e) {
+                        image.src = e.target.result; // Đặt src của hình ảnh
+                        previewContainer.appendChild(image); // Thêm hình ảnh vào phần hiển thị
+                    };
+
+                    // Đọc và hiển thị tệp hình ảnh
+                    reader.readAsDataURL(this.files[i]);
+                }
+            }
         });
     </script>
 
