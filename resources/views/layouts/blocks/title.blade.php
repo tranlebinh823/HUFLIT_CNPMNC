@@ -13,4 +13,5 @@
         </div>
     </div>
 </div>
+<hr>
 <!-- end page title -->

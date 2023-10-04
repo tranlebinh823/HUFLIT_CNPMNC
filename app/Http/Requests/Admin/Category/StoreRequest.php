@@ -26,8 +26,8 @@ class StoreRequest extends FormRequest
                 'string',
                 'max:30',
                 'min:6',
-                'regex:/^[a-zA-Z\s]+$/',
-                'not_regex:/@gmail\.com$/i',
+                'unique:categories,category_name',
+
             ],
         ];
     }
@@ -44,8 +44,8 @@ class StoreRequest extends FormRequest
             'category_name.string' => 'Trường :attribute phải là một chuỗi.',
             'category_name.max' => 'Trường :attribute không được dài hơn :max ký tự.',
             'category_name.min' => 'Trường :attribute phải có ít nhất :min ký tự.',
-            'category_name.regex' => 'Trường :attribute chỉ được chứa chữ cái và dấu cách.',
-            'category_name.not_regex' => 'Trường :attribute không được phép chứa địa chỉ email Gmail.',
+            'category_name.unique' => 'Trường :attribute đã tồn tại trong cơ sở dữ liệu.', // Thêm thông báo duy nhất
+
         ];
     }
 

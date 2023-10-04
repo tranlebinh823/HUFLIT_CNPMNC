@@ -201,12 +201,20 @@
                     </div>
 
 
-                        @foreach ($notifications as $notification)
-                            <div class="alert alert-primary" role="alert">
-                                {!! $notification->message !!}
-                            </div>
-                        @endforeach
-             
+                    @php
+                        $notificationCount = 1;
+                    @endphp
+                    @foreach ($notifications as $notification)
+                        <div class="alert alert-primary" role="alert">
+                            <span class="notification-number">{{ $notificationCount }} . </span>
+                            {!! $notification->message !!}
+                        </div>
+                        @php
+                            $notificationCount++;
+                        @endphp
+                    @endforeach
+
+
 
 
 

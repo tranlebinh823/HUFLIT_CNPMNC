@@ -15,7 +15,7 @@
         </div>
     </div>
 
-   
+
 
     <form action="{{ route('admin.roles.store') }}" method="POST">
         @csrf
@@ -53,7 +53,7 @@
                             <label class="permission-item">
                                 <input type="checkbox" name="permission[]" value="{{ $value->id }}" class="name">
                                 {{ $value->name }}
-                           
+
                             </label>
                         @endforeach
                     </div>

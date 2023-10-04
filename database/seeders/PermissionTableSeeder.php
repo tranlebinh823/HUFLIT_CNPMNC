@@ -38,11 +38,6 @@ class PermissionTableSeeder extends Seeder
             'subcategory-delete',
             'subcategory-show',
 
-            'childcategory-list',
-            'childcategory-create',
-            'childcategory-edit',
-            'childcategory-delete',
-            'childcategory-show',
 
             'dashboard-list',
 
@@ -52,23 +47,6 @@ class PermissionTableSeeder extends Seeder
             'product-delete',
             'product-show',
 
-            'productimage-list',
-            'productimage-create',
-            'productimage-edit',
-            'productimage-delete',
-            'productimage-show',
-
-            'brand-list',
-            'brand-create',
-            'brand-edit',
-            'brand-delete',
-            'brand-show',
-
-            'vendor-list',
-            'vendor-create',
-            'vendor-edit',
-            'vendor-delete',
-            'vendor-show',
         ];
 
         foreach ($permissions as $permission) {

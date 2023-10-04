@@ -2,42 +2,66 @@
 @section('module', 'Product')
 @section('action', 'Edit')
 
-
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Product</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <h4 class="header-title">Edit Product</h4>
     </div>
+    <div class="card-body">
+        <form method="POST" action="{{ route('admin.products.update', ['id' => $product->id]) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
-   
+            <div class="mb-3">
+                <label class="form-label" for="product-title-input">Product Title</label>
+                <input type="text" class="form-control" id="product-title-input" name="product_title" value="{{ $product->product_title }}">
+            </div>
 
-    <form action="{{ route('admin.products.update',$product->id) }}" method="POST">
-    	@csrf
-        @method('PUT')
-         <div class="row">
-		    <div class="col-xs-12 col-sm-12 col-md-12">
-		        <div class="form-group">
-		            <strong>Name:</strong>
-		            <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Name">
-		        </div>
-		    </div>
-		    <div class="col-xs-12 col-sm-12 col-md-12">
-		        <div class="form-group">
-		            <strong>Detail:</strong>
-		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $product->detail }}</textarea>
-		        </div>
-		    </div>
-		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-		      <button type="submit" class="btn btn-primary">Submit</button>
-		    </div>
-		</div>
-    </form>
+            <div class="mb-3">
+                <label class="form-label" for="product-name-input">Product Name</label>
+                <input type="text" class="form-control" id="product-name-input" name="product_name" value="{{ $product->product_name }}">
+            </div>
 
-<p class="text-center text-primary"><small>Tutorial by LaravelTuts.com</small></p>
+            <div class="mb-3">
+                <label class="form-label" for="slug-input">Product Slug</label>
+                <input type="text" class="form-control" id="slug-input" name="slug" value="{{ $product->slug }}">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="pro-description-input">Product Description</label>
+                <textarea id="pro-description-input" name="pro_description" class="form-control">{{ $product->pro_description }}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="product-image-input">Product Main Image</label>
+                <input type="file" class="form-control" id="product-image-input" name="images">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="product-gallery-input">Product Gallery Images</label>
+                <input type="file" class="form-control" id="product-gallery-input" name="images_gallery[]" multiple>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="status-select">Status</label>
+                <select class="form-control" id="status-select" name="status">
+                    <option value="0" {{ $product->status == 0 ? 'selected' : '' }}>Approve</option>
+                    <option value="1" {{ $product->status == 1 ? 'selected' : '' }}>Cancel</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="visibility-select">Visibility</label>
+                <select class="form-control" id="visibility-select" name="visibility">
+                    <option value="0" {{ $product->visibility == 0 ? 'selected' : '' }}>Public</option>
+                    <option value="1" {{ $product->visibility == 1 ? 'selected' : '' }}>Hidden</option>
+                </select>
+            </div>
+
+            <div class="text-end mb-3">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
 @endsection

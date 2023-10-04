@@ -1,32 +1,58 @@
 @extends('layouts.app')
-@section('module', 'Product')
-@section('action', 'Show')
 
+@section('module', 'Product')
+@section('action', 'Detail')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Product</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <h4 class="header-title">{{ $product->product_title }}</h4>
     </div>
+    <div class="card-body">
+        <div class="mb-3">
+            <strong>Product Name:</strong> {{ $product->product_name }}
+        </div>
+        <div class="mb-3">
+            <strong>Product Slug:</strong> {{ $product->slug }}
+        </div>
+        <div class="mb-3">
+            <strong>Category:</strong> {{ $product->category_name }}
+        </div>
+        <div class="mb-3">
+            <strong>Subcategory:</strong> {{ $product->subcategory_name }}
+        </div>
+        <div class="mb-3">
+            <strong>Price:</strong> {{ $product->price }}
+        </div>
+        <div class="mb-3">
+            <strong>Status:</strong> {{ $product->status == 0 ? 'Approve' : 'Cancel' }}
+        </div>
+        <div class="mb-3">
+            <strong>Created At:</strong> {{ $product->created_at }}
+        </div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                {{ $product->name }}
-            </div>
+        <div class="mb-3">
+            <strong>Description:</strong>
+            <p>{!! $product->pro_description !!}</p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Details:</strong>
-                {{ $product->detail }}
+
+        <div class="mb-3">
+            <strong>Product Images:</strong>
+            <div class="row">
+                @if ($product->images)
+                    <div class="col-md-6">
+                        <img src="{{ asset('upload/' . $product->images) }}" alt="Product Image" class="img-fluid">
+                    </div>
+                @endif
+                @if ($product->images_gallery)
+                    @foreach (json_decode($product->images_gallery) as $image)
+                        <div class="col-md-6">
+                            <img src="{{ asset('assets/' . $image) }}" alt="Gallery Image" class="img-fluid">
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
+</div>
 @endsection

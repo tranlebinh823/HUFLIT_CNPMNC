@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ChildCategoryController;
+
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\NotificationController;
@@ -58,15 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('update/{id}', 'update')->name('update');
             Route::get('destroy/{id}', 'destroy')->name('destroy');
         });
-        Route::prefix('childcategories')->controller(ChildCategoryController::class)->name('childcategories.')->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('create', 'create')->name('create');
-            Route::post('store', 'store')->name('store');
-            Route::get('edit/{id}', 'edit')->name('edit');
-            Route::get('show/{id}', 'show')->name('show');
-            Route::post('update/{id}', 'update')->name('update');
-            Route::get('destroy/{id}', 'destroy')->name('destroy');
-        });
+
         Route::prefix('categories')->controller(CategoryController::class)->name('categories.')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
