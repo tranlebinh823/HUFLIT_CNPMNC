@@ -99,12 +99,13 @@ class ProductController extends Controller
             ->first();
 
         $subCategories = DB::table('sub_categories')->get();
+        $categories = DB::table('categories')->get();
 
         if (!$product) {
             return redirect()->route('admin.products.index')->with('error', 'Không tìm thấy sản phẩm');
         }
 
-        return view('admin.products.edit', compact('product', 'subCategories'));
+        return view('admin.products.edit', compact('product', 'subCategories','categories'));
     }
 
     public function update(UpdateRequest $request, $id)
