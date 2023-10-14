@@ -7,20 +7,20 @@
 
 <div class="row">
     <div class="col-12">
-
         <div class="card">
-            <div class="card-header">
-                <h4 class="header-title">Edit Product</h4>
+            <div class="card-header d-flex justify-content-between" >
+                <h4 class="header-title">Edit</h4>
+                <h4 class="header-title">
+                    <a class="btn btn-info" href="{{ route('admin.products.index') }}">Quay về</a>
+                </h4>
             </div>
             <div class="card-body">
-
                 @if(session('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
                 @endif
-
                 <form action="{{ route('admin.products.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-               
+
                     <div class="mb-3">
                         <label for="product_name" class="form-label">Product Name:</label>
                         <input type="text" class="form-control" id="product_name" name="product_name" value="{{ $product->product_name }}">
@@ -46,9 +46,9 @@
                         <label for="images_gallery" class="form-label">Product Images Gallery:</label>
                         <input type="file" class="form-control" id="images_gallery" name="images_gallery[]" multiple>
                         @if (!empty($product->images_gallery))
-                            @foreach (json_decode($product->images_gallery) as $galleryImage)
-                                <img src="{{ asset('assets/' . $galleryImage) }}" alt="Gallery Image" height="120px" width="120px">
-                            @endforeach
+                        @foreach (json_decode($product->images_gallery) as $galleryImage)
+                        <img src="{{ asset('assets/' . $galleryImage) }}" alt="Gallery Image" height="120px" width="120px">
+                        @endforeach
                         @endif
                     </div>
 
@@ -102,7 +102,7 @@
                         <label for="sub_category_id" class="form-label">Subcategory:</label>
                         <select class="form-select" id="sub_category_id" name="sub_category_id">
                             @foreach ($subCategories as $subcategory)
-                                <option value="{{ $subcategory->id }}" @if($subcategory->id == $product->sub_category_id) selected @endif>{{ $subcategory->subcategory_name }}</option>
+                            <option value="{{ $subcategory->id }}" @if($subcategory->id == $product->sub_category_id) selected @endif>{{ $subcategory->subcategory_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -111,7 +111,7 @@
                         <label for="category_id" class="form-label">Category:</label>
                         <select class="form-select" id="category_id" name="category_id">
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" @if($category->id == $product->category_id) selected @endif>{{ $category->category_name }}</option>
+                            <option value="{{ $category->id }}" @if($category->id == $product->category_id) selected @endif>{{ $category->category_name }}</option>
                             @endforeach
                         </select>
                     </div>

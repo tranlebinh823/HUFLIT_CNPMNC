@@ -9,6 +9,13 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                <h4 class="header-title"> Create </h4>
+
+                    <h4 class="header-title">
+                        <a class="btn btn-info" href="{{ route('admin.products.index') }}">Quay về</a>
+                    </h4>
+                </div>
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="form-label" for="product-title-input">Product Title</label>
@@ -223,12 +230,7 @@
                 </div>
                 <!-- end card body -->
             </div>
-
-
-
-
             <!-- end card -->
-
         </div>
         <!-- end col -->
     </div>

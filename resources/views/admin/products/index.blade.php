@@ -1,37 +1,36 @@
 @extends('layouts.app')
-
 @section('module', 'Product')
 @section('action', 'List')
-
 @section('content')
 
 <div class="row">
     <div class="col-3">
     </div>
     <div class="col-9">
-
         <div class="card">
             <div class="card-header">
                 <h4 class="header-title">Product List</h4>
+                <h4 class="header-title">@can('product-create')
+                    <a class="btn btn-info" href="{{ route('admin.products.create') }}">Create New</a>
+                    @endcan
+                </h4>
             </div>
             <div class="card-body">
                 @if(session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
-
                 @if(session('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
                 @endif
-
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Product</th>
-
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>Sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Ngày tạo</th>
+                            <th>Tình trạng</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +57,7 @@
 
 
                             <td>{{ $product->price }}</td>
+                            <td>{{ $product->created_at }}</td>
                             <td>
                                 @if ($product->status == 0)
                                 <span class="badge bg-success">Approve</span>

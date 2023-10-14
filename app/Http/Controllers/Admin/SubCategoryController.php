@@ -58,13 +58,13 @@ class SubCategoryController extends Controller
 
     public function edit($id)
     {
+        $categories = DB::table('categories')->get();
         $item = DB::table('sub_categories')->find($id);
-
         if (!$item) {
             return redirect()->route('admin.subcategories.index')->with('error', 'Không tìm thấy danh mục con');
         }
 
-        return view('admin.subcategories.edit', compact('item'));
+        return view('admin.subcategories.edit', compact('item','categories'));
     }
 
     public function update(Request $request, $id)

@@ -1,16 +1,16 @@
 @extends('layouts.app')
-
 @section('module', 'Product')
 @section('action', 'Show')
 
 @section('content')
-
 <div class="row">
     <div class="col-12">
-
         <div class="card">
-            <div class="card-header">
-                <h4 class="header-title">Product Details</h4>
+            <div class="card-header  d-flex justify-content-between">
+                <h4 class="header-title" >Details</h4>
+                <h4 class="header-title">
+                    <a class="btn btn-info" href="{{ route('admin.products.index') }}">Quay về</a>
+                </h4>
             </div>
             <div class="card-body">
 
@@ -49,9 +49,9 @@
                         <th>Images Gallery:</th>
                         <td>
                             @if (!empty($product->images_gallery))
-                                @foreach (json_decode($product->images_gallery) as $galleryImage)
-                                    <img src="{{ asset('assets/' . $galleryImage) }}" alt="Gallery Image" height="120px" width="120px">
-                                @endforeach
+                            @foreach (json_decode($product->images_gallery) as $galleryImage)
+                            <img src="{{ asset('assets/' . $galleryImage) }}" alt="Gallery Image" height="120px" width="120px">
+                            @endforeach
                             @endif
                         </td>
                     </tr>
@@ -79,9 +79,9 @@
                         <th>Status:</th>
                         <td>
                             @if ($product->status == 0)
-                                <span class="badge bg-success">Approve</span>
+                            <span class="badge bg-success">Approve</span>
                             @else
-                                <span class="badge bg-danger">Cancel</span>
+                            <span class="badge bg-danger">Cancel</span>
                             @endif
                         </td>
                     </tr>
@@ -89,9 +89,9 @@
                         <th>Visibility:</th>
                         <td>
                             @if ($product->visibility == 0)
-                                Hidden
+                            Hidden
                             @else
-                                Visible
+                            Visible
                             @endif
                         </td>
                     </tr>

@@ -18,12 +18,12 @@
                 <div class="form-group">
                     <label for="exampleSelectRounded0">Category</label>
                     <select class="custom-select" id="category_id" name="category_id">
-                        @foreach ($item_cat as $loz)
-                            <option value="{{ $loz->id }}">{{ $loz->category_name }}</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                         @endforeach
                     </select>
                 </div>
-            </div>
+            </div> 
 
             <!-- /.card-body -->
             <div class="card-footer">
