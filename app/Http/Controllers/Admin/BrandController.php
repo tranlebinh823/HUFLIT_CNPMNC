@@ -16,8 +16,10 @@ class BrandController extends Controller
         $this->middleware('permission:brand-delete', ['only' => ['destroy']]);
         $this->middleware('permission:brand-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:brand-show', ['only' => ['show']]);
+        
+        $this->middleware('permission:brand-show', ['only' => ['show']]);
     }
-
+    
     public function index()
     {
         $data['item'] = DB::table('brands')->get();
